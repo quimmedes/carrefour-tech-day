@@ -20,7 +20,7 @@ function LoadApi() {
   const [carregando, setCarregando] = useState(true)
   const [lista, setLista] = useState([])
 
-  let url = "https://justcors.com/tl_68a61b8/https://mercado.carrefour.com.br/api/catalog_system/pub/products/search?fq=carrefourbr1056";
+  let url = "https://justcors.com/tl_68a61b8/https://mercado.carrefour.com.br/api/catalog_system/pub/products/search?fq=carrefourbr739";
 
   const fetchLista = async () => {
     setCarregando(true)
@@ -75,11 +75,17 @@ function LoadApi() {
   )
 }
 
+const Image = ({imageId,imageLabel,imageTag, imageUrl, imageText, imageLastModified}) => {
+  return(
+    <div> <img src={imageUrl} /></div>
+  )
+}
 
-const Produto = ({ productId, productName }) => {
+const Produto = ({ productId, productName, brand, brandId, brandImageUrl, linkText, productReference,
+  productReferenceCode, categoryId, productTitle, metaTagDescription, releaseDate, clusterHighlights, productClusters,searchableClusters, categories, categoriesIds, link, items     }) => {
 
   return (
-    <div>Id: {productId}, Produto: {productName}</div>
+    <div>Id: {productId}  Produto: {productName}  Titulo:{productTitle} Data: {releaseDate} item: <Image  {...items[0].images[0]}/> </div>
   )
 }
 
