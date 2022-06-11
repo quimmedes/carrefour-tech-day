@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import Produto from './Produto';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Carregando from './Carregando';
+import Carregando from './Carregando'
+import Image from 'react-bootstrap/Image'
 
 
-const LoadHome = () =>  {
+function ProdutoDetalhes(){
+
     const [carregando, setCarregando] = useState(true)
     const [lista, setLista] = useState([])
   
@@ -53,15 +54,20 @@ const LoadHome = () =>  {
     return (
       <main>
 
-<Container fluid>
-<Row xs={1} md={4} className="g-4">
-  
+<Container>
+
+
+ 
     
     {lista.map((lista) => {
-            return <Produto key={lista.productId} {...lista}  />;
+
+      if(lista.productId == 4745249)
+      return <Produtos key={lista.productId} {...lista}  />;
+
+
           })}
     
-  </Row>
+  
 </Container>
   
           
@@ -70,6 +76,40 @@ const LoadHome = () =>  {
     )
   }
 
-  
 
-  export default LoadHome;
+
+
+const Produtos = ({ productId, productName, brand, brandId, brandImageUrl, linkText, productReference,
+    productReferenceCode, categoryId, productTitle, metaTagDescription, releaseDate, clusterHighlights, 
+    productClusters,searchableClusters, categories, categoriesIds, link, description, items     }) => {
+  
+    return (
+      <div>
+        
+        <Row>
+    <Col> <Images {...items[0].images[0]}/></Col>
+    <Col> <h2>Produto: {productName} </h2> Titulo:{productTitle} Data: {releaseDate}</Col>
+  </Row>
+  <Row>
+    <Col>Descricao: {description} </Col>
+    
+  </Row>
+      
+         
+  </div>
+    )
+  }
+
+  const Images = ({imageId,imageLabel,imageTag, imageUrl, imageText, imageLastModified}) => {
+    return(
+      <div> <img src={imageUrl}  className='img-fluid rounded'
+      alt=''
+      style={{ maxWidth: '24rem' }} /></div>
+    )
+  }
+
+
+
+ 
+
+  export default ProdutoDetalhes
