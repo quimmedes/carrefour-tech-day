@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import Produto from './Produto';
 import Carregando from './Carregando';
+import { useParams } from 'react-router-dom'
+
 
 
 const LoadHome = () =>  {
     const [carregando, setCarregando] = useState(true)
     const [lista, setLista] = useState([])
-  
-    let url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/catalog_system/pub/products/search?fq=carrefourbr105";
+    const { id } = useParams()
+     
+    
+    let url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/catalog_system/pub/products/search?fq="+id;
   
     const fetchLista = async () => {
       setCarregando(true)

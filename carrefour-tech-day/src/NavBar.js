@@ -10,7 +10,7 @@ const NavBar = ()=>{
   <a href="#Sobre">Sobre</a>
   <div className="search-container">
     <form action="/">
-      <input type="text" placeholder="Pesquisar.." name="pesquisar" />
+      <input type="text" placeholder="Pesquisar Lojas por Cep.." name="pesquisar" />
       <button type="submit"><i className="fa fa-search"></i></button>
     </form>
   </div>

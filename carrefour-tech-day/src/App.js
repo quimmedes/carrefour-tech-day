@@ -18,10 +18,12 @@ function App() {
 <NavBar />    
 
     <Routes>
-      
-      <Route path="/" element={<LoadHome />} />
+    <Route path="/" element={<LoadLoja />} />
+
+      <Route path="/loja/:id" element={<LoadHome />} />
       <Route path="/produtodetalhes/:id" element={<ProdutoDetalhes />} />
       <Route path="/loadloja" element={<LoadLoja />} />
+      <Route path="/?pesquisar=:id" element={<LoadLoja />} />
 
 
     </Routes>

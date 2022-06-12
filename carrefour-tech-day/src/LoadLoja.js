@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Carregando from './Carregando';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import placeholder from './img/placeholder.png'
+import { Link } from 'react-router-dom';
+import {useLocation} from "react-router-dom";
+
 
 
 
@@ -9,10 +13,18 @@ const LoadLoja = () =>  {
     const [carregando, setCarregando] = useState(true)
     const [lista, setLista] = useState([])
     const [mapa, setMapa] = useState([])
+    const search = useLocation().search;
+    const id = new URLSearchParams(search).get('pesquisar');
 
+    var url = ""
 
-  
-    let url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/checkout/pub/regions?country=BRA&postalCode=14801788";
+    if(id != undefined &&  id.length>6){
+    url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/checkout/pub/regions?country=BRA&postalCode="+id;
+      console.log(id)
+  }
+   else
+   url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/checkout/pub/regions?country=BRA&postalCode=14801788" 
+   console.log(id)
 
 
     const fetchLista = async () => {
@@ -109,10 +121,13 @@ mapa.map(function(nome, i) {
 
   const Seller = (id)=>{
     return(
+      <Link to={{pathname: "/loja/" + id.id}} >
+
       <div className='Container' style={{height:'245px', padding:'0'}}>
         <div className='Bloco'><img className="Bloco" src={placeholder} alt="" /></div>
         <div className='Flex-bottom' style={{paddingTop:'10px', paddingLeft:'15px'}} > {id.name} </div>
         </div>
+        </Link>
     )
   }
 
