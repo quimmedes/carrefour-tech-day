@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import Carregando from './Carregando';
 import axios from 'axios';
+import placeholder from './img/placeholder.png'
+
 
 
 const LoadLoja = () =>  {
     const [carregando, setCarregando] = useState(true)
     const [lista, setLista] = useState([])
+    const [mapa, setMapa] = useState([])
+
+
   
     let url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/checkout/pub/regions?country=BRA&postalCode=14801788";
 
@@ -18,12 +23,34 @@ const LoadLoja = () =>  {
         const lista = await response.data
         setCarregando(false)
         setLista(lista)
+        load()
+
       } catch (error) {
         setCarregando(false)
         console.log(error)
         
       }
     }
+
+
+    const load = ()=> {
+      var mp = []
+
+      for(var i = 0; i < lista.length; i++){
+        var li = lista[i].sellers;
+
+       for(var l = 0; l < li.length; l++){
+        mp.push(lista[i].sellers[l])
+      //  console.log(lista[i].sellers[l].name)
+    }
+
+
+    }
+
+    setMapa(mp)
+    }
+
+
   
     useEffect(() => {
       fetchLista()
@@ -35,6 +62,8 @@ const LoadLoja = () =>  {
         </main>
       )
     }
+
+
     if (lista.length === 0) {
       return (
         <main>
@@ -49,25 +78,43 @@ const LoadLoja = () =>  {
       )
     }
 
-    return (
-      <main>
-        <div className='Lista'>
-    {lista.map((lista) => {
-            return <Seller key={lista.id} {...lista}  />;
-          })}
-   </div>
+
+    if (mapa.length === 0) {
+      load()
+    }
+
 
   
-      </main>
+    
+
+    
+    return(
+        <div className='Lista'>
+  
+
+         
+        
+{
+
+mapa.map(function(nome, i) { 
+  return <div> <Seller key={i} {...nome}/> </div> 
+})}
+      
+
+            </div>
+    ) 
+
+    
+  }
+
+  const Seller = (id)=>{
+    return(
+      <div className='Container' style={{height:'245px', padding:'0'}}>
+        <div className='Bloco'><img className="Bloco" src={placeholder} alt="" /></div>
+        <div className='Flex-bottom' style={{paddingTop:'10px', paddingLeft:'15px'}} > {id.name} </div>
+        </div>
     )
   }
 
-  var Seller = (id, logo, name)=>{
-    return(
-        <div>Id : {id}, logo: {logo}, nome: {name}</div>
-    );
-  }
-
   
-
   export default LoadLoja;
