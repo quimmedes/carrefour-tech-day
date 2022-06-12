@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+  //Retorna Unidades de Produto, LoadHome chama esse componente para exibir uma lista de itens
 
 const Produto = ({ productId, productName, brand, brandId, brandImageUrl, linkText, productReference,
     productReferenceCode, categoryId, productTitle, metaTagDescription, releaseDate, clusterHighlights, 
@@ -8,7 +9,6 @@ const Produto = ({ productId, productName, brand, brandId, brandImageUrl, linkTe
       const nav = useNavigate();
 
 
-  //Retorna Unidades de Produto
     return (
 
       <div className="Container">

@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import './App.css';
+import './style/App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoadHome from './LoadHome';
 import ProdutoDetalhes from './ProdutoDetalhes';
 import NavBar from './NavBar';
 import LoadLoja from './LoadLoja'
 
-
+//Main function
 
 function App() {
   
   return (
-
 
 
 <Router>

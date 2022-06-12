@@ -1,5 +1,6 @@
-import './Nav.css'
+import './style/Nav.css'
 
+//Menu principal
 
 const NavBar = ()=>{
     return(

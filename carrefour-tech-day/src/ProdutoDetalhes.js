@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Carregando from './Carregando'
 
+
+//Retorna uma instancia de um produto em uma pagina com mais detalhes
+
 function ProdutoDetalhes(props){
 
     const [carregando, setCarregando] = useState(true)
@@ -75,6 +78,8 @@ function ProdutoDetalhes(props){
 
 
 
+//Retorna o produto 
+  
 const Produtos = ({ productId, productName, brand, brandId, brandImageUrl, linkText, productReference,
     productReferenceCode, categoryId, productTitle, metaTagDescription, releaseDate, clusterHighlights, 
     productClusters,searchableClusters, categories, categoriesIds, link, description, items     }) => {
@@ -87,9 +92,9 @@ const Produtos = ({ productId, productName, brand, brandId, brandImageUrl, linkT
     <div className='grid-item item1'> <Images {...items[0].images[0]}/></div>
     <div className='grid-item item2'> <h3>Produto: {productName} </h3>  </div>
     <div className="grid-item item3">{items[0].sellers[0].commertialOffer.Price.toString().replace('.',',')} R$/ {items[0].measurementUnit}</div>
-      <div className='grid-item item4'>Data: {new Date(releaseDate).toLocaleDateString()}</div>
-  <div className='grid-item item5'>
-  <div><b>Descrição: </b> {description} </div>
+    <div className='grid-item item4'>Data: {new Date(releaseDate).toLocaleDateString()}</div>
+    <div className='grid-item item5'>
+    <div><b>Descrição: </b> {description} </div>
     <p><b>Marca:</b> {brand}</p>
     <p><b>Referencia:</b> {productReference}</p>
     <p> {metaTagDescription}</p>

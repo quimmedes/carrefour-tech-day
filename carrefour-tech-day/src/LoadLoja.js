@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Carregando from './Carregando';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
 import placeholder from './img/placeholder.png'
 import { Link } from 'react-router-dom';
 import {useLocation} from "react-router-dom";
 
 
-
+//Carrega a lista de lojas por CEP
 
 const LoadLoja = () =>  {
     const [carregando, setCarregando] = useState(true)

@@ -3,7 +3,7 @@ import Produto from './Produto';
 import Carregando from './Carregando';
 import { useParams } from 'react-router-dom'
 
-
+//Carrega a lista de produtos pelo Id da loja
 
 const LoadHome = () =>  {
     const [carregando, setCarregando] = useState(true)
@@ -27,9 +27,12 @@ const LoadHome = () =>  {
       }
     }
   
-    useEffect(() => {
+      // Similar ao componentDidMount e componentDidUpdate:
+
+      useEffect(() => {
       fetchLista()
     }, [])
+
     if (carregando) {
       return (
         <main>
