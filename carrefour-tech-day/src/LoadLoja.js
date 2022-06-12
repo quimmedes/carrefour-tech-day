@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import Produto from './Produto';
 import Carregando from './Carregando';
+import axios from 'axios';
 
 
-const LoadHome = () =>  {
+const LoadLoja = () =>  {
     const [carregando, setCarregando] = useState(true)
     const [lista, setLista] = useState([])
   
-    let url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/catalog_system/pub/products/search?fq=carrefourbr105";
-  
+    let url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/checkout/pub/regions?country=BRA&postalCode=14801788";
+
+
     const fetchLista = async () => {
       setCarregando(true)
       try {
-        const response = await fetch(url)
-        const lista = await response.json()
+        const response = await axios.get(url, {
+            "Content-Type": "application/xml; charset=utf-8"})
+        const lista = await response.data
         setCarregando(false)
         setLista(lista)
       } catch (error) {
@@ -51,7 +53,7 @@ const LoadHome = () =>  {
       <main>
         <div className='Lista'>
     {lista.map((lista) => {
-            return <Produto key={lista.productId} {...lista}  />;
+            return <Seller key={lista.id} {...lista}  />;
           })}
    </div>
 
@@ -60,6 +62,12 @@ const LoadHome = () =>  {
     )
   }
 
+  var Seller = (id, logo, name)=>{
+    return(
+        <div>Id : {id}, logo: {logo}, nome: {name}</div>
+    );
+  }
+
   
 
-  export default LoadHome;
+  export default LoadLoja;

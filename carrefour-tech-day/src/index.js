@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App className="App"  />
+    <App className="Auto"  />
 </React.StrictMode>
 
 );

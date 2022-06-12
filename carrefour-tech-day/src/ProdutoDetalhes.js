@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import { useParams } from 'react-router-dom'
 import Carregando from './Carregando'
-import Image from 'react-bootstrap/Image'
 
-
-function ProdutoDetalhes(){
+function ProdutoDetalhes(props){
 
     const [carregando, setCarregando] = useState(true)
     const [lista, setLista] = useState([])
+    const { id } = useParams()
   
-    let url = "https://justcors.com/tl_124fa38/https://mercado.carrefour.com.br/api/catalog_system/pub/products/search?fq=carrefourbr739";
+    let url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/catalog_system/pub/products/search?fq=carrefourbr105";
   
     const fetchLista = async () => {
       setCarregando(true)
@@ -28,6 +25,8 @@ function ProdutoDetalhes(){
     }
   
     useEffect(() => {
+      console.log( id)
+
       fetchLista()
     }, [])
     if (carregando) {
@@ -54,21 +53,19 @@ function ProdutoDetalhes(){
     return (
       <main>
 
-<Container>
+<div>
 
-
- 
     
     {lista.map((lista) => {
 
-      if(lista.productId == 4745249)
+      if(lista.productId == id )
       return <Produtos key={lista.productId} {...lista}  />;
 
 
           })}
     
   
-</Container>
+</div>
   
           
   
@@ -78,33 +75,41 @@ function ProdutoDetalhes(){
 
 
 
-
 const Produtos = ({ productId, productName, brand, brandId, brandImageUrl, linkText, productReference,
     productReferenceCode, categoryId, productTitle, metaTagDescription, releaseDate, clusterHighlights, 
     productClusters,searchableClusters, categories, categoriesIds, link, description, items     }) => {
+
+    
   
     return (
-      <div>
+      <div className='grid-container'>
         
-        <Row>
-    <Col> <Images {...items[0].images[0]}/></Col>
-    <Col> <h2>Produto: {productName} </h2> Titulo:{productTitle} Data: {releaseDate}</Col>
-  </Row>
-  <Row>
-    <Col>Descricao: {description} </Col>
-    
-  </Row>
+    <div className='grid-item item1'> <Images {...items[0].images[0]}/></div>
+    <div className='grid-item item2'> <h3>Produto: {productName} </h3>  </div>
+    <div className="grid-item item3">{items[0].sellers[0].commertialOffer.Price.toString().replace('.',',')} R$/ {items[0].measurementUnit}</div>
+      <div className='grid-item item4'>Data: {new Date(releaseDate).toLocaleDateString()}</div>
+  <div className='grid-item item5'>
+  <div><b>Descrição: </b> {description} </div>
+    <p><b>Marca:</b> {brand}</p>
+    <p><b>Referencia:</b> {productReference}</p>
+    <p> {metaTagDescription}</p>
+
+  </div>
       
          
   </div>
     )
   }
 
+  const cluster = (Id,String)=>{
+    return(
+      <div>{Id} {String}</div>
+    )
+  }
+
   const Images = ({imageId,imageLabel,imageTag, imageUrl, imageText, imageLastModified}) => {
     return(
-      <div> <img src={imageUrl}  className='img-fluid rounded'
-      alt=''
-      style={{ maxWidth: '24rem' }} /></div>
+      <div> <img src={imageUrl}  alt=''   style={{ maxWidth: '24rem' }} /> </div>
     )
   }
 

@@ -1,6 +1,6 @@
 const Carregando = () => {
     return (
-      <div className="carregando">
+      <div className="Auto">
         <h1>Carregando...</h1>
       </div>
     );
