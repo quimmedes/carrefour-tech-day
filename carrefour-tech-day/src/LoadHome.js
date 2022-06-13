@@ -11,7 +11,7 @@ const LoadHome = () =>  {
     const { id } = useParams()
      
     
-    let url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/catalog_system/pub/products/search?fq="+id;
+    let url = "https://mercado.carrefour.com.br/api/catalog_system/pub/products/search?fq="+id;
   
     const fetchLista = async () => {
       setCarregando(true)

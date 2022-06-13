@@ -18,11 +18,11 @@ const LoadLoja = () =>  {
     var url = ""
 
     if(id != undefined &&  id.length>6){
-    url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/checkout/pub/regions?country=BRA&postalCode="+id;
+    url = "https://mercado.carrefour.com.br/api/checkout/pub/regions?country=BRA&postalCode="+id;
       console.log(id)
   }
    else
-   url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/checkout/pub/regions?country=BRA&postalCode=14801788" 
+   url = "https://mercado.carrefour.com.br/api/checkout/pub/regions?country=BRA&postalCode=14801788" 
    console.log(id)
 
 
@@ -62,7 +62,8 @@ const LoadLoja = () =>  {
     }
 
 
-  
+      // Similar ao componentDidMount e componentDidUpdate:
+
     useEffect(() => {
       fetchLista()
     }, [])
@@ -95,28 +96,17 @@ const LoadLoja = () =>  {
     }
 
 
-  
-    
-
     
     return(
         <div className='Lista'>
-  
-
-         
-        
-{
-
-mapa.map(function(nome, i) { 
+  {mapa.map(function(nome, i) { 
   return <div> <Seller key={i} {...nome}/> </div> 
-})}
-      
-
-            </div>
-    ) 
+})} </div>  )
+    //fim retorno 
 
     
   }
+  //Fim LoadLoja
 
   const Seller = (id)=>{
     return(

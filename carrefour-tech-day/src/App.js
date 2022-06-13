@@ -5,7 +5,7 @@ import ProdutoDetalhes from './ProdutoDetalhes';
 import NavBar from './NavBar';
 import LoadLoja from './LoadLoja'
 
-//Main function
+//Main function e rotas
 
 function App() {
   
@@ -27,9 +27,6 @@ function App() {
     </Routes>
 
   </Router>
-
-
-
 
    
   );

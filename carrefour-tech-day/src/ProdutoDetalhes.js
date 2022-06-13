@@ -11,7 +11,7 @@ function ProdutoDetalhes(props){
     const [lista, setLista] = useState([])
     const { id } = useParams()
   
-    let url = "https://justcors.com/tl_26283e1/https://mercado.carrefour.com.br/api/catalog_system/pub/products/search?fq=carrefourbr105";
+    let url = "https://mercado.carrefour.com.br/api/catalog_system/pub/products/search?fq=carrefourbr105";
   
     const fetchLista = async () => {
       setCarregando(true)
