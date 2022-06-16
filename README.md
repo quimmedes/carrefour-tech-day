@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `versão online https://mercadinho.pages.dev/ só funcionará corretamente após autorização dos CORS pela Api, mas funciona com um backup caso não consiga acessar api`
+### `versão online https://mercadinho.pages.dev/ só funcionará corretamente após autorização dos CORS pela Api, senão só retorna um padrão estatico`
 
 ### `cd carrefour-tech-day`
 
