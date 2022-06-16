@@ -6,6 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `live running https://mercadinho.pages.dev/`
+
 ### `cd carrefour-tech-day`
 
 ### `npm install`
